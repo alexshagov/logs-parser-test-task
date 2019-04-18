@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+require_relative 'base'
+
 module Statistics
-  class UniquePageViews < PageViews
+  class UniquePageViews < Base
     attr_reader :page_views_by_ip
 
     private
@@ -9,7 +11,7 @@ module Statistics
     # @return [Hash] the resulting hash, e.g.
     # { "url" => value }, where `value` is the unique views count
     def analyze
-      page_views = super
+      page_views = page_views_stats_klass.new(log_path).generate!
       uniq_page_views_by_ip
 
       page_views.keys.each_with_object({}) do |url, stats|
@@ -33,8 +35,8 @@ module Statistics
       page_views_by_ip.tap { |views| views.values.each(&:uniq!) }
     end
 
-    def extract_ip_from(line)
-      line.split(' ').last
+    def page_views_stats_klass
+      PageViews
     end
   end
 end
