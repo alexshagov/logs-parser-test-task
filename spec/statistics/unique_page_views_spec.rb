@@ -4,11 +4,13 @@ require 'spec_helper'
 require_relative '../../lib/app.rb'
 
 RSpec.describe Statistics::UniquePageViews do
-  subject { described_class.new(log_path) }
+  subject { described_class.new(log_instance) }
 
   let(:log_path) do
     File.join(File.expand_path('../fixtures', __dir__), 'webserver.log')
   end
+
+  let(:log_instance) { Factories::Log.build(log_path) }
 
   let(:expected_statistics) do
     {

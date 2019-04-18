@@ -21,14 +21,15 @@ class App
         parser.banner = BANNER_MESSAGE
 
         parser.on('-l', '--log FILEPATH', HELP_MESSAGE) do |filepath|
-          log = Factories::Log.build(path: filepath)
+          log = Factories::Log.build(filepath)
 
           puts 'Starting...'
           puts 'Overall page views:'
           puts Statistics::PageViews.new(log).generate!
           puts 'Uniq page views:'
           puts Statistics::UniquePageViews.new(log).generate!
-        rescue StandardError
+        rescue StandardError => err
+          puts err.to_s
           puts SUPPORT_MESSAGE
         end
 
