@@ -6,13 +6,13 @@ include IntegrationHelpers
 RSpec.describe App do
   context 'with arguments' do
     it do
-      expect(run_app(log_name: 'webserver.log')).to include('Starting...')
+      expect(run_app(arg: '--log webserver.log')).to include('Starting...')
     end
   end
 
   context 'with no arguments' do
     it do
-      expect(run_app(log_name: nil)).to include('No log file provided!')
+      expect(run_app(arg: nil)).to include('Usage: ruby app.rb [options]')
     end
   end
 end
