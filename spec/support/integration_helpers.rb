@@ -12,7 +12,7 @@ module IntegrationHelpers
       "ruby app.rb #{arg}",
       chdir: chdir
     )
-
+    puts output
     output
   end
 end
