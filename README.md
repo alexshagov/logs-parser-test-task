@@ -23,6 +23,10 @@ Log file must be in the following format
 
 ## How to run specs
 
+notes:
+* the task has been implemented using TDD approach and has 100% test coverage
+
+
 ```bash
   rspec spec
 ```
