@@ -1,8 +1,6 @@
 AllCops:
   Exclude:
-    - 'spec/spec_helper.rb'
-    - 'spec/support/**'
-    - 'spec/app_spec.rb'
+    - 'spec/**/**'
     - 'lib/app.rb'
     - 'vendor/bundle/**/*'
     

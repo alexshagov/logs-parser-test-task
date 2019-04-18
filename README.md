@@ -35,8 +35,7 @@ Runs specs with the following command:
 ## Ideas
 
 * Large files support: Get rid of `File.read` and analyze read file by chunks
-* Introduce formatters to support different ways of analysis output
-* Introduce an abstraction to support different types of logs, e.g. `Log::Content` class which will be responsible for parsing log's lines
+* Introduce formatters to support different ways of analysis output, for now a simple Hash is getting printed
 
 ### License
 

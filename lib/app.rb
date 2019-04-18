@@ -3,8 +3,10 @@
 # @author Alexander Shagov @alexshgov
 
 require 'optparse'
-require_relative 'statistics/page_views'
-require_relative 'statistics/unique_page_views'
+
+Dir[File.join(__dir__, 'factories', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, 'statistics', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, 'logs', '*.rb')].each { |file| require file }
 
 class App
   class << self
@@ -18,13 +20,16 @@ class App
       OptionParser.new do |parser|
         parser.banner = BANNER_MESSAGE
 
-        parser.on('-l', '--log FILEPATH', HELP_MESSAGE) do |log|
+        parser.on('-l', '--log FILEPATH', HELP_MESSAGE) do |filepath|
+          log = Factories::Log.build(filepath)
+
           puts 'Starting...'
           puts 'Overall page views:'
           puts Statistics::PageViews.new(log).generate!
           puts 'Uniq page views:'
           puts Statistics::UniquePageViews.new(log).generate!
-        rescue StandardError
+        rescue StandardError => err
+          puts err.to_s
           puts SUPPORT_MESSAGE
         end
 
