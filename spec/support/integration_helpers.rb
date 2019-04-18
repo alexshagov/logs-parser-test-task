@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'open3'
+require_relative '../../lib/app.rb'
 
 module IntegrationHelpers
   def run_app(arg: '--l webserver.log')

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require_relative '../lib/app.rb'
 
 RSpec.describe App do
   include IntegrationHelpers
