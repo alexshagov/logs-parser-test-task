@@ -21,11 +21,12 @@ Log file must be in the following format
 /index 200.017.277.774
 ```
 
-## How to run specs
+## Testing
 
 notes:
 * the task has been implemented using TDD approach and has 100% test coverage
 
+Runs specs with the following command:
 
 ```bash
   rspec spec
