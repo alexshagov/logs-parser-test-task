@@ -7,12 +7,31 @@ module Statistics
     end
 
     def print!
-      read_log
+      read_log!
+
+      analyze
     end
 
     private
 
-    def read_log
+    # @return [Hash] the resulting hash, e.g.
+    # { "url" => value }, where `value` is calculated according to a rule
+    def analyze
+      log_lines.inject({}) do |stats, line|
+        stats[extract_url_from(line)] = stats[extract_url_from(line)].to_i.succ
+        stats
+      end
+    end
+
+    def log_lines
+      log_content.split("\n")
+    end
+
+    def extract_url_from(line)
+      line.split(' ').first
+    end
+
+    def read_log!
       @log_content ||= File.read(log_path)
     end
   end

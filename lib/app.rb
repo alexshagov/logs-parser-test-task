@@ -1,3 +1,5 @@
+# @author Alexander Shagov @alexshgov
+
 require 'optparse'
 require_relative 'statistics/page_views'
 require_relative 'statistics/unique_page_views'
