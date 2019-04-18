@@ -5,8 +5,23 @@ include IntegrationHelpers
 
 RSpec.describe App do
   context 'with arguments' do
-    it do
-      expect(run_app(arg: '--log webserver.log')).to include('Starting...')
+    let(:log_path) do
+      File.join(File.expand_path("../spec/fixtures", __dir__), 'webserver.log')
+    end
+
+    it 'runs successfully without errors' do
+      expect(run_app(arg: "--log #{log_path}")).to include('Starting...')
+      expect(run_app(arg: "--log #{log_path}")).to_not include('Something went wrong')
+    end
+
+    context 'when invalid log path provided' do
+      let(:log_path) do
+        File.join(File.expand_path("../INVALID", __dir__), 'webserver.log')
+      end
+      
+      it 'returns prints an error message' do
+        expect(run_app(arg: "--log #{log_path}")).to include('Something went wrong')
+      end
     end
   end
 

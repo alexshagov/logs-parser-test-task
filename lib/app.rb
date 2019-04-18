@@ -12,10 +12,13 @@ class App
         parser.banner = "Usage: ruby app.rb [options]"
 
         parser.on("-l", "--log FILEPATH", "Begin execution with a given FILEPATH") do |log|
-          puts "Starting..."
-          
-          Statistics::PageViews.new(log).print!
-          Statistics::UniquePageViews.new(log).print!
+          begin
+            puts "Starting..."
+            Statistics::PageViews.new(log).print!
+            Statistics::UniquePageViews.new(log).print!
+          rescue StandardError => e
+            puts "Something went wrong, contact our support +1012489124!"
+          end
         end
 
         parser.on("-h", "--help", "Prints this help") do
