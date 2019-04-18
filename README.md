@@ -27,6 +27,11 @@ Log file must be in the following format
   rspec spec
 ```
 
+## Ideas
+
+* Large files support: Get rid of `File.read` and analyze by chunks
+* Introduce formatters to support different ways of analysis output
+
 ### License
 
 Available as open source under the terms of the MIT License.
