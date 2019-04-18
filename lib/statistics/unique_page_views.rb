@@ -6,10 +6,8 @@ module Statistics
 
     private
 
-    # alias_method :page_views_statistics, :analyze
-
     # @return [Hash] the resulting hash, e.g.
-    # { "url" => value }, where `value` is calculated according to a rule
+    # { "url" => value }, where `value` is the unique views count
     def analyze
       page_views = super
       uniq_page_views_by_ip

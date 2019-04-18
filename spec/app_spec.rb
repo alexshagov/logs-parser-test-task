@@ -20,7 +20,7 @@ RSpec.describe App do
         File.join(File.expand_path('../INVALID', __dir__), 'webserver.log')
       end
 
-      it 'returns prints an error message' do
+      it 'prints an error message' do
         expect(run_app(arg: "--log #{log_path}")).to include('Something went wrong')
       end
     end

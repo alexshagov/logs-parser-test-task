@@ -17,7 +17,7 @@ module Statistics
     private
 
     # @return [Hash] the resulting hash, e.g.
-    # { "url" => value }, where `value` is calculated according to a rule
+    # { "url" => value }, where `value` is the views count
     def analyze
       log_lines.each_with_object({}) do |line, stats|
         stats[extract_url_from(line)] = stats[extract_url_from(line)].to_i.succ
