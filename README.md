@@ -24,7 +24,7 @@ Log file must be in the following format
 ## How to run specs
 
 ```bash
-  rspec 
+  rspec spec
 ```
 
 ### License
