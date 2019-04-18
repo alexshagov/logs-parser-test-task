@@ -5,7 +5,7 @@ require_relative '../../lib/app.rb'
 require_relative 'shared_examples_for_statistics'
 
 RSpec.describe Statistics::UniquePageViews do
-  it_behaves_like "statistics with an expected result" do
+  it_behaves_like 'statistics with an expected result' do
     let(:expected_statistics) do
       {
         '/about' => 21,

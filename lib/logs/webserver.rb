@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Logs
   class Webserver
     attr_reader :filepath

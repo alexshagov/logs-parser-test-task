@@ -1,4 +1,6 @@
-RSpec.shared_examples "statistics with an expected result" do |parameter|
+# frozen_string_literal: true
+
+RSpec.shared_examples 'statistics with an expected result' do |_parameter|
   subject { described_class.new(log_instance) }
 
   let(:log_path) do

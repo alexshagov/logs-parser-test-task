@@ -12,14 +12,8 @@ module Statistics
     # { "url" => value }, where `value` is the unique views count
     def analyze!
       page_views = page_views_stats_klass.new(log).generate!
-      uniq_page_views_by_ip
-
       page_views.keys.each_with_object({}) do |url, stats|
-        views_count =
-          uniq_page_views_by_ip.values.flatten.select do |visited_page|
-            visited_page == url
-          end.count
-        stats[url] = views_count
+        stats[url] = views_count_for(url)
       end
     end
 
@@ -28,11 +22,21 @@ module Statistics
     def uniq_page_views_by_ip
       @page_views_by_ip ||=
         log.lines.each_with_object({}) do |line, stats|
-          stats[log.extract_ip_from(line)] = [] if stats[log.extract_ip_from(line)].nil?
-          stats[log.extract_ip_from(line)] << log.extract_url_from(line)
+          group_urls_by_ip!(stats, line)
         end
 
       page_views_by_ip.tap { |views| views.values.each(&:uniq!) }
+    end
+
+    def views_count_for(url)
+      uniq_page_views_by_ip.values.flatten.select do |visited_page|
+        visited_page == url
+      end.count
+    end
+
+    def group_urls_by_ip!(stats, line)
+      stats[log.extract_ip_from(line)] ||= []
+      stats[log.extract_ip_from(line)] << log.extract_url_from(line)
     end
 
     def page_views_stats_klass

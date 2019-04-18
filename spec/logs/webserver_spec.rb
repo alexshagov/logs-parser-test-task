@@ -11,13 +11,13 @@ RSpec.describe Logs::Webserver do
   end
   let(:expected_lines_array) do
     [
-      "/help_page/1 451.106.204.921",
-      "/home 444.701.448.104",
-      "/index 929.398.951.889"
+      '/help_page/1 451.106.204.921',
+      '/home 444.701.448.104',
+      '/index 929.398.951.889'
     ]
   end
   let(:line_sample) do
-    "/index 929.398.951.889"
+    '/index 929.398.951.889'
   end
 
   describe '#lines' do
