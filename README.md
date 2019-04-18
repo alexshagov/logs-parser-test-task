@@ -1,4 +1,6 @@
-# Logs parser
+[![Build Status](https://travis-ci.com/alexshgov/sp-test-task.svg?branch=master)](https://travis-ci.com/alexshgov/sp-test-task)
+
+# Logs parser 
 
 ## How to run
 
