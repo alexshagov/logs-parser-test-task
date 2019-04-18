@@ -8,11 +8,14 @@
   ruby lib/app.rb --l path_to_your_log
 ```
 
-## Log format
+## Supported logs formats
 
-Log file must be in the following format
+For now, the only one format is supported:
+
 
 ```bash
+# webserver.log
+
 /about 722.247.931.582
 /help_page/1 235.313.352.950
 /help_page/1 555.576.836.194
@@ -34,7 +37,7 @@ Runs specs with the following command:
 
 ## Ideas
 
-* Large files support: Get rid of `File.read` and analyze read file by chunks
+* Large files support: Get rid of `File.read` and analyze file by chunks
 * Introduce formatters to support different ways of analysis output, for now a simple Hash is getting printed
 
 ### License
