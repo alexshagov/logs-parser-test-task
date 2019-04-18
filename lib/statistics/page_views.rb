@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Statistics
   class PageViews
-    attr_reader :log_path, :log_content
+    attr_reader :log_path
 
     def initialize(log_path)
       @log_path = log_path
@@ -17,9 +19,8 @@ module Statistics
     # @return [Hash] the resulting hash, e.g.
     # { "url" => value }, where `value` is calculated according to a rule
     def analyze
-      log_lines.inject({}) do |stats, line|
+      log_lines.each_with_object({}) do |line, stats|
         stats[extract_url_from(line)] = stats[extract_url_from(line)].to_i.succ
-        stats
       end
     end
 
@@ -32,7 +33,8 @@ module Statistics
     end
 
     def read_log!
-      @log_content ||= File.read(log_path)
+      @read_log ||= File.read(log_path)
     end
+    alias log_content read_log!
   end
 end

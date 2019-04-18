@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Statistics
   class UniquePageViews < PageViews
     attr_reader :page_views_by_ip
@@ -12,13 +14,12 @@ module Statistics
       page_views = super
       uniq_page_views_by_ip
 
-      page_views.keys.inject({}) do |stats, url|
+      page_views.keys.each_with_object({}) do |url, stats|
         views_count =
           uniq_page_views_by_ip.values.flatten.select do |visited_page|
             visited_page == url
           end.count
         stats[url] = views_count
-        stats
       end
     end
 
@@ -26,11 +27,9 @@ module Statistics
     # { "ip" => [Array] }, where `Array` is a list of uniq visited urls
     def uniq_page_views_by_ip
       @page_views_by_ip ||=
-        log_lines.inject({}) do |stats, line|
+        log_lines.each_with_object({}) do |line, stats|
           stats[extract_ip_from(line)] = [] if stats[extract_ip_from(line)].nil?
           stats[extract_ip_from(line)] << extract_url_from(line)
-
-          stats
         end
 
       page_views_by_ip.tap { |views| views.values.each(&:uniq!) }

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require_relative '../lib/app.rb'
 
-include IntegrationHelpers
-
 RSpec.describe App do
+  include IntegrationHelpers
+
   context 'with arguments' do
     let(:log_path) do
-      File.join(File.expand_path("../spec/fixtures", __dir__), 'webserver.log')
+      File.join(File.expand_path('../spec/fixtures', __dir__), 'webserver.log')
     end
 
     it 'runs successfully without errors' do
@@ -16,7 +18,7 @@ RSpec.describe App do
 
     context 'when invalid log path provided' do
       let(:log_path) do
-        File.join(File.expand_path("../INVALID", __dir__), 'webserver.log')
+        File.join(File.expand_path('../INVALID', __dir__), 'webserver.log')
       end
 
       it 'returns prints an error message' do
