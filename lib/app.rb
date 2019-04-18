@@ -22,9 +22,9 @@ class App
         parser.on('-l', '--log FILEPATH', HELP_MESSAGE) do |log|
           puts 'Starting...'
           puts "Overall page views:"
-          puts Statistics::PageViews.new(log).print!
+          puts Statistics::PageViews.new(log).generate!
           puts "Uniq page views:"
-          puts Statistics::UniquePageViews.new(log).print!
+          puts Statistics::UniquePageViews.new(log).generate!
         rescue StandardError
           puts SUPPORT_MESSAGE
         end

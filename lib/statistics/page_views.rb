@@ -8,7 +8,7 @@ module Statistics
       @log_path = log_path
     end
 
-    def print!
+    def generate!
       read_log!
 
       analyze

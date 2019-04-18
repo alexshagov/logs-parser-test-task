@@ -22,6 +22,6 @@ RSpec.describe Statistics::UniquePageViews do
   end
 
   it 'prints statistics' do
-    expect(subject.print!).to include expected_statistics
+    expect(subject.generate!).to include expected_statistics
   end
 end
