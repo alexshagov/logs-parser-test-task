@@ -14,7 +14,7 @@ class App
 
     # rubocop:disable Metrics/MethodLength
     def run!
-      args = ARGV.empty? ? %w[--help] : ARGV
+      ARGV << '-h' if ARGV.empty?
 
       OptionParser.new do |parser|
         parser.banner = BANNER_MESSAGE
@@ -31,7 +31,7 @@ class App
           puts parser
           exit
         end
-      end.parse! args
+      end.parse! ARGV
     end
     # rubocop:enable Metrics/MethodLength
   end
