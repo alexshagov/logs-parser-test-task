@@ -3,6 +3,7 @@ AllCops:
     - 'spec/spec_helper.rb'
     - 'spec/support/**'
     - 'spec/app_spec.rb'
+    - 'lib/app.rb'
     - 'vendor/bundle/**/*'
     
 Documentation:

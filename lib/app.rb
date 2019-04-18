@@ -12,7 +12,6 @@ class App
     HELP_MESSAGE = 'Begin execution with a given FILEPATH'
     SUPPORT_MESSAGE = 'Something went wrong, contact our support +1012489124'
 
-    # rubocop:disable Metrics/MethodLength
     def run!
       ARGV << '-h' if ARGV.empty?
 
@@ -21,9 +20,9 @@ class App
 
         parser.on('-l', '--log FILEPATH', HELP_MESSAGE) do |log|
           puts 'Starting...'
-          puts "Overall page views:"
+          puts 'Overall page views:'
           puts Statistics::PageViews.new(log).generate!
-          puts "Uniq page views:"
+          puts 'Uniq page views:'
           puts Statistics::UniquePageViews.new(log).generate!
         rescue StandardError
           puts SUPPORT_MESSAGE
@@ -35,7 +34,6 @@ class App
         end
       end.parse! ARGV
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
 
