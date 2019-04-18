@@ -21,7 +21,7 @@ RSpec.describe Statistics::PageViews do
     }
   end
 
-  it 'prints statistics' do
+  it 'returns expected page views statistics' do
     expect(subject.generate!).to include expected_statistics
   end
 end

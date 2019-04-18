@@ -27,7 +27,7 @@ RSpec.describe App do
   end
 
   context 'with no arguments' do
-    it do
+    it 'prints help message' do
       expect(run_app(arg: nil)).to include('Usage: ruby app.rb [options]')
     end
   end
