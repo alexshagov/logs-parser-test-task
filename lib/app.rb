@@ -3,10 +3,9 @@
 # @author Alexander Shagov @alexshgov
 
 require 'optparse'
-
-Dir[File.join(__dir__, 'factories', '*.rb')].each { |file| require file }
-Dir[File.join(__dir__, 'statistics', '*.rb')].each { |file| require file }
-Dir[File.join(__dir__, 'logs', '*.rb')].each { |file| require file }
+require_relative 'logs/webserver'
+require_relative 'statistics/page_views'
+require_relative 'statistics/unique_page_views'
 
 class App
   class << self
@@ -21,7 +20,7 @@ class App
         parser.banner = BANNER_MESSAGE
 
         parser.on('-l', '--log FILEPATH', HELP_MESSAGE) do |filepath|
-          log = Factories::Log.build(filepath)
+          log = Logs::Webserver.new(filepath)
 
           puts 'Starting...'
           puts 'Overall page views:'

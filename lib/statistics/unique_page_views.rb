@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative 'views'
 
 module Statistics
-  class UniquePageViews < Base
+  class UniquePageViews < Views
     attr_reader :page_views_by_ip
 
     private

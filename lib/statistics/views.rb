@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Statistics
-  class Base
+  class Views
     attr_reader :log
 
     # @param [Log, #lines, #extract_url_from(..), #extract_ip_from(..)]

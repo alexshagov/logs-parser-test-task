@@ -6,7 +6,7 @@ RSpec.shared_examples 'statistics with an expected result' do |_parameter|
   let(:log_path) do
     File.join(File.expand_path('../fixtures', __dir__), 'webserver.log')
   end
-  let(:log_instance) { Factories::Log.build(log_path) }
+  let(:log_instance) { Logs::Webserver.new(log_path) }
 
   let(:expected_statistics) do
     # to be overwritten
