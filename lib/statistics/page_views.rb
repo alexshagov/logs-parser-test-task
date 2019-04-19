@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'base'
+require_relative 'views'
 
 module Statistics
-  class PageViews < Base
+  class PageViews < Views
     private
 
     # @return [Hash] the resulting hash, e.g.
